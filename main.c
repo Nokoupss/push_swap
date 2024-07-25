@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/06/07 18:17:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:11:14 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,12 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc >= 2)
 		init_list(a, argv);
+	if (is_sorted(a) == false)
+	{
+		if (stack_len(a) == 2)
+			sa(&a);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+	}
 	return (0);
 }

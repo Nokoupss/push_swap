@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/06/07 18:03:38 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:09:14 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;
+
+
+/*
+**Algorithm
+*/
+/*
+**sort_three
+*/
+
+void	sort_three(t_stack **a);
 
 /*
 **Command
@@ -86,5 +96,17 @@ t_stack	*init_list(t_stack *a, char **argv);
 t_stack	*init_node(int value);
 t_stack	*stack_last(t_stack *stack);
 void	stack_add_back(t_stack **stack, t_stack *new);
+
+/*
+**Parsing
+*/
+/*
+**stack_utils
+*/
+
+int		is_sorted(t_stack *stack);
+int		stack_len(t_stack *stack);
+t_stack	*find_max_node(t_stack *stack);
+void	free_list(t_stack *stack);
 
 #endif

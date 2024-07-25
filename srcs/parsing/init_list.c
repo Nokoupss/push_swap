@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_struct.c                                      :+:      :+:    :+:   */
+/*   init_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/04/25 13:56:51 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:07:41 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 t_stack	*init_list(t_stack *a, char **argv)
 {
@@ -20,7 +20,7 @@ t_stack	*init_list(t_stack *a, char **argv)
 	t_stack	*temp;
 
 	i = 0;
-	while (argv[i] != '\0')
+	while (argv[i] != NULL)
 	{
 		j = 0;
 		split = ft_split(argv[i], ' ');

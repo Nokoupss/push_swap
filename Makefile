@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 15:50:59 by nbelkace          #+#    #+#              #
-#    Updated: 2024/04/26 11:19:18 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/07/25 05:10:01 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,13 @@ UTILS = utils
 UTILS_C = $(SRCS)/$(UTILS)
 
 # Source Files
-SRCS_C =	$(SRCS)/$(COMMAND)/push_command.c \
+SRCS_C =	$(SRCS)/$(ALGORITHM)/sort_three.c \
+			$(SRCS)/$(COMMAND)/push_command.c \
 			$(SRCS)/$(COMMAND)/reverse-rotate_command.c \
 			$(SRCS)/$(COMMAND)/rotate_command.c \
 			$(SRCS)/$(COMMAND)/swap_command.c \
 			$(SRCS)/$(PARSING)/init_list.c \
+			$(SRCS)/$(PARSING)/stack_utils.c \
 			main.c \
 			
 # Object FIles
@@ -48,7 +50,7 @@ all : ${NAME}
 
 ${NAME} : ${OBJS}
 	make -C $(UTILS_C)/libft
-	${CC} -o ${NAME} ${OBJS} ${LIBFT} -i includes
+	${CC} -o ${NAME} ${OBJS} ${LIBFT} -I includes
 
 .c.o :
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
