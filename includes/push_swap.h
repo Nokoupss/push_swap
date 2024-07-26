@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/25 05:09:14 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/26 05:27:51 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,19 @@ typedef struct s_stack
 	int				push_cost;
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	struct s_stack	*target_node;
 }				t_stack;
 
+/*
+**Algorithm
+*/
+/*
+**set_target_node
+*/
+
+void	push_a_to_b(t_stack **a, t_stack **b);
+t_stack	*find_closest_smaller(t_stack *b, int value);
+void	set_target_node_a(t_stack *a, t_stack *b);
 
 /*
 **Algorithm
@@ -107,6 +118,7 @@ void	stack_add_back(t_stack **stack, t_stack *new);
 int		is_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
 t_stack	*find_max_node(t_stack *stack);
+t_stack	*find_min_node(t_stack *stack);
 void	free_list(t_stack *stack);
 
 #endif

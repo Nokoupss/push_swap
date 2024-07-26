@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/25 05:07:57 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/26 05:29:12 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	is_sorted(t_stack *stack)
 {
 	t_stack	*current;
 
-	current = stack;	
-
+	current = stack;
 	if (stack == NULL)
 		return (true);
 	while (current->next != NULL)
@@ -49,7 +48,6 @@ t_stack	*find_max_node(t_stack *stack)
 
 	max_node = stack;
 	current = stack;
-	
 	if (stack == NULL)
 		return (NULL);
 	while (current != NULL)
@@ -61,9 +59,27 @@ t_stack	*find_max_node(t_stack *stack)
 	return (max_node);
 }
 
-void free_list(t_stack *stack)
+t_stack	*find_min_node(t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*min_node;
+	t_stack	*current;
+
+	min_node = stack;
+	current = stack;
+	if (stack == NULL)
+		return (NULL);
+	while (current != NULL)
+	{
+		if (current->value < min_node->value)
+			min_node = current;
+		current = current->next;
+	}
+	return (min_node);
+}
+
+void	free_list(t_stack *stack)
+{
+	t_stack	*temp;
 
 	while (stack != NULL)
 	{
