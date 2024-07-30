@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/26 05:27:51 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/07/30 07:05:02 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,50 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
-	int				push_cost;
+	int				push_cost_a;
+	int				push_cost_target_b;
+	bool			above_median;
+	bool			cheapest;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target_node;
 }				t_stack;
+
+
+/*
+**Algorithm
+*/
+/*
+**algo_rotate
+*/
+
+void	rotate_both_stacks(t_stack *a, t_stack *b);
+void	reverse_rotate_both_stacks(t_stack *a, t_stack *b);
+void	rotate_stack_a(t_stack *a, int push_cost_a);
+void	rotate_stack_b(t_stack *b, int push_cost_b);
+void	rotate_all(t_stack *a, t_stack *b);
+
+/*
+**Algorithm
+*/
+/*
+**cost_analysis
+*/
+
+void	set_index(t_stack *stack);
+void	cost_analysis_a(t_stack *a);
+void	cost_analysis_target_b(t_stack *b);
+void	set_cheapest(t_stack *a, t_stack *b);
+
+/*
+**Algorithm
+*/
+/*
+**init_data
+*/
+
+void	init_data_a(t_stack *a, t_stack *b);
+void	init_data_b(t_stack *a, t_stack *b);
 
 /*
 **Algorithm
@@ -36,9 +75,20 @@ typedef struct s_stack
 **set_target_node
 */
 
-void	push_a_to_b(t_stack **a, t_stack **b);
+void	push_2_to_b(t_stack **a, t_stack **b);
 t_stack	*find_closest_smaller(t_stack *b, int value);
 void	set_target_node_a(t_stack *a, t_stack *b);
+t_stack	*find_closest_bigger(t_stack *a, int value);
+void	set_target_node_b(t_stack *b, t_stack *a);
+
+/*
+**Algorithm
+*/
+/*
+**sort_stacks
+*/
+
+void	sort_stacks(t_stack **a, t_stack **b);
 
 /*
 **Algorithm
