@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/30 07:05:02 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:05:59 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_stack
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 	struct s_stack	*target_node;
 }				t_stack;
 
@@ -50,13 +49,22 @@ void	rotate_all(t_stack *a, t_stack *b);
 **Algorithm
 */
 /*
+**algo_utils
+*/
+
+int	ft_abs(int nb);
+
+/*
+**Algorithm
+*/
+/*
 **cost_analysis
 */
 
 void	set_index(t_stack *stack);
 void	cost_analysis_a(t_stack *a);
 void	cost_analysis_target_b(t_stack *b);
-void	set_cheapest(t_stack *a, t_stack *b);
+void	set_cheapest(t_stack *a);
 
 /*
 **Algorithm
@@ -153,7 +161,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 **init_list
 */
 
-t_stack	*init_list(t_stack *a, char **argv);
+t_stack	*init_list(t_stack **a, char **argv);
 t_stack	*init_node(int value);
 t_stack	*stack_last(t_stack *stack);
 void	stack_add_back(t_stack **stack, t_stack *new);
@@ -169,6 +177,6 @@ int		is_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
 t_stack	*find_max_node(t_stack *stack);
 t_stack	*find_min_node(t_stack *stack);
-void	free_list(t_stack *stack);
+void	free_stack(t_stack **stack);
 
 #endif

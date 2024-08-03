@@ -6,20 +6,20 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/25 05:07:41 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:30:55 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack	*init_list(t_stack *a, char **argv)
+t_stack	*init_list(t_stack **a, char **argv)
 {
 	int		i;
 	int		j;
 	char	**split;
 	t_stack	*temp;
 
-	i = 0;
+	i = 1;
 	while (argv[i] != NULL)
 	{
 		j = 0;
@@ -29,15 +29,15 @@ t_stack	*init_list(t_stack *a, char **argv)
 			temp = init_node(ft_atoi(split[j]));
 			if (temp == NULL)
 			{
-				free_list(a);
+				free_stack(a);
 				return (NULL);
 			}
-			stack_add_back(&a, temp);
+			stack_add_back(a, temp);
 			j++;
 		}
 		i++;
 	}
-	return (a);
+	return (*a);
 }
 
 t_stack	*init_node(int value)
@@ -48,7 +48,13 @@ t_stack	*init_node(int value)
 	if (stack == NULL)
 		return (NULL);
 	stack->value = value;
+	stack->index = -1;
+	stack->push_cost_a = 0;
+	stack->push_cost_target_b = 0;
+	stack->above_median = false;
+	stack->cheapest = false;
 	stack->next = NULL;
+	stack->target_node = NULL;
 	return (stack);
 }
 

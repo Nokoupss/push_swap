@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/26 05:29:12 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/01 01:05:41 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,19 @@ t_stack	*find_min_node(t_stack *stack)
 	return (min_node);
 }
 
-void	free_list(t_stack *stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
-
-	while (stack != NULL)
+	t_stack	*current;
+	
+	if (stack == NULL)
+		return ;
+	current = *stack;
+	while (current != NULL)
 	{
-		temp = stack;
-		stack = stack->next;
-		free(temp);
+		temp = current->next;
+		free(current);
+		current = temp;
 	}
+	*stack = NULL;
 }

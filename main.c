@@ -6,31 +6,47 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/30 06:56:11 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/01 05:48:58 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_stack	*a;
-	t_stack	*b;
+// void print_stack(t_stack *stack)
+// {
+//     while (stack)
+//     {
+//         ft_printf("%d ", stack->value);
+//         stack = stack->next;
+//     }
+//     ft_printf("\n");
+// }
 
-	a = NULL;
-	b = NULL;
-	if ((argc == 1) || (argc == 2 && argv[1][0] == 0))
-		return (1);
-	else if (argc >= 2)
-		init_list(a, argv);
-	if (is_sorted(a) == false)
-	{
-		if (stack_len(a) == 2)
-			sa(&a);
-		else if (stack_len(a) == 3)
-			sort_three(&a);
-		else
-			sort_stacks(&a, &b);
-	}
-	return (0);
-}
+// int	main(int argc, char **argv)
+// {
+// 	t_stack	*a;
+// 	t_stack	*b;
+
+// 	a = NULL;
+// 	b = NULL;
+// 	if ((argc == 1) || (argc == 2 && argv[1][0] == 0))
+// 		return (1);
+// 	else if (argc >= 2)
+// 		init_list(&a, argv);
+// 	ft_printf("Initial stack:\n");
+// 	print_stack(a);
+// 	if (is_sorted(a) == false)
+// 	{
+// 		if (stack_len(a) == 2)
+// 			sa(&a);
+// 		else if (stack_len(a) == 3)
+// 			sort_three(&a);
+// 		else
+// 			sort_stacks(&a, &b);
+// 	}
+// 	ft_printf("Sorted stack:\n");
+// 	print_stack(a);
+// 	free_stack(&a);
+// 	free_stack(&b);
+// 	return (0);
+// }

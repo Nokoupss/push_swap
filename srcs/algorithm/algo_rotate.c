@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 04:58:52 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/30 07:04:58 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:27:08 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	rotate_both_stacks(t_stack *a, t_stack *b)
 {
-	while (a->push_cost_a > 0 && b->push_cost_target_b > 0)
+	while (a->push_cost_a > 0 && a->target_node->push_cost_target_b > 0)
 	{
 		a->push_cost_a--;
-		b->push_cost_target_b--;
+		a->target_node->push_cost_target_b--;
 		rr(&a, &b);
 	}
 }
 
 void	reverse_rotate_both_stacks(t_stack *a, t_stack *b)
 {
-	while (a->push_cost_a < 0 && b->push_cost_target_b < 0)
+	while (a->push_cost_a < 0 && a->target_node->push_cost_target_b < 0)
 	{
 		a->push_cost_a++;
-		b->push_cost_target_b++;
+		a->target_node->push_cost_target_b++;
 		rrr(&a, &b);
 	}
 }
@@ -72,5 +72,5 @@ void	rotate_all(t_stack *a, t_stack *b)
 	rotate_both_stacks(a, b);
 	reverse_rotate_both_stacks(a, b);
 	rotate_stack_a(a, a->push_cost_a);
-	rotate_stack_b(b, b->push_cost_target_b);
+	rotate_stack_b(b, a->target_node->push_cost_target_b);
 }
