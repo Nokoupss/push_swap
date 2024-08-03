@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 01:05:59 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 07:37:28 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_stack
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*next;
+	struct s_stack	*prev;
 	struct s_stack	*target_node;
 }				t_stack;
 
@@ -52,7 +53,11 @@ void	rotate_all(t_stack *a, t_stack *b);
 **algo_utils
 */
 
-int	ft_abs(int nb);
+t_stack	*find_max_node(t_stack *stack);
+t_stack	*find_min_node(t_stack *stack);
+int		ft_abs(int nb);
+int		find_min_value(t_stack **a);
+void	min_on_top(t_stack **a);
 
 /*
 **Algorithm

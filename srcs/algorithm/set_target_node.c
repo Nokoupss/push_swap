@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 00:37:30 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/07/30 07:02:56 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 07:37:11 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_stack	*find_closest_bigger(t_stack *a, int value)
 {
 	t_stack	*closest_bigger;
 	t_stack	*current;
-	long		min_diff;
+	long	min_diff;
 	int		diff;
 
 	closest_bigger = NULL;
@@ -95,6 +95,7 @@ void	set_target_node_b(t_stack *a, t_stack *b)
 	while (current_b != NULL)
 	{
 		current_b->target_node = find_closest_bigger(a, current_b->value);
+		ft_printf("target_b to a %d", b->target_node);
 		current_b = current_b->next;
 	}
 }

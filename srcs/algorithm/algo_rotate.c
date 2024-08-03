@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 04:58:52 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 01:27:08 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 06:24:09 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void	rotate_stack_b(t_stack *b, int push_cost_target_b)
 
 void	rotate_all(t_stack *a, t_stack *b)
 {
-
-	rotate_both_stacks(a, b);
-	reverse_rotate_both_stacks(a, b);
-	rotate_stack_a(a, a->push_cost_a);
-	rotate_stack_b(b, a->target_node->push_cost_target_b);
+	if (a != NULL && a->target_node != NULL)
+	{
+		rotate_both_stacks(a, b);
+		reverse_rotate_both_stacks(a, b);
+		rotate_stack_a(a, a->push_cost_a);
+		rotate_stack_b(b, a->target_node->push_cost_target_b);
+	}
 }

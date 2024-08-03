@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 02:20:45 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:06 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/03 06:17:58 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ void	set_cheapest(t_stack *a)
 		}
 		a = a->next;
 	}
-	cheapest_node->cheapest = true;
+	if (cheapest_node != NULL)
+		cheapest_node->cheapest = true;
 }
