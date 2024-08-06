@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:46:11 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 07:37:55 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 08:14:57 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*first;
 
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	first = *stack;
 	temp = *stack;
 	while (temp->next != NULL)

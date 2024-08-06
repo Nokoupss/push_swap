@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 07:39:05 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 07:40:07 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("Sorted stack:\n");
 	print_stack(a);
+	print_stack(b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
 }
+

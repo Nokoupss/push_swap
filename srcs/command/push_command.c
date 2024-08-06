@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:45:56 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/04/25 13:57:21 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 08:17:33 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*temp;
 
+	if (*src == NULL)
+		return ;
 	temp = *src;
 	*src = (*src)->next;
 	temp->next = *dest;

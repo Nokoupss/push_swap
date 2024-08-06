@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:45:16 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/04/16 18:58:53 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 08:15:03 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap(t_stack **stack)
 {
 	t_stack	*temp;
 
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	temp = *stack;
 	*stack = (*stack)->next;
 	temp->next = (*stack)->next;

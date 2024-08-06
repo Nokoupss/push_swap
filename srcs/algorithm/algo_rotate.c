@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 04:58:52 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 06:24:09 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 08:34:15 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ void	rotate_all(t_stack *a, t_stack *b)
 {
 	if (a != NULL && a->target_node != NULL)
 	{
+		set_target_node_a(a, b);
+		set_target_node_b(b, a);
+		cost_analysis_a(a);
+		cost_analysis_target_b(b);
 		rotate_both_stacks(a, b);
 		reverse_rotate_both_stacks(a, b);
 		rotate_stack_a(a, a->push_cost_a);

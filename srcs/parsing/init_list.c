@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/01 01:30:55 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 07:46:48 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,15 @@ t_stack	*stack_last(t_stack *stack)
 	while (temp->next != NULL)
 		temp = temp->next;
 	return (temp);
+}
+
+t_stack	*go_end_minus_1(t_stack *end)
+{
+	if (end == NULL)
+		return (end);
+	while (end->next->next != NULL)
+		end = end->next;
+	return (end);
 }
 
 void	stack_add_back(t_stack **stack, t_stack *new)

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 07:37:28 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/06 08:12:13 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ typedef struct s_stack
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 	struct s_stack	*target_node;
 }				t_stack;
+
+
+void print_stack(t_stack *stack);
+t_stack	*go_end_minus_1(t_stack *end);
 
 
 /*
@@ -154,7 +157,7 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 **swap_command
 */
 
-void	swap(t_stack **stack);
+void	swap(t_stack **head);
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_stack **stack_a, t_stack **stack_b);
