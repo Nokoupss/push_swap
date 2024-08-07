@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 02:20:45 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 06:20:38 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:23:14 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cost_analysis_a(t_stack *a)
 	}
 }
 
-void	cost_analysis_target_b(t_stack *b)
+void	cost_analysis_b(t_stack *b)
 {
 	int	len_b;
 
@@ -57,60 +57,111 @@ void	cost_analysis_target_b(t_stack *b)
 	while (b != NULL)
 	{
 		if (b->above_median == true)
-			b->push_cost_target_b = b->index;
+			b->push_cost_b = b->index;
 		if (b->above_median == false)
-			b->push_cost_target_b = (len_b - (b->index)) * -1;
-		ft_printf("Node %d push_cost_target_b: %d\n", b->value, b->push_cost_target_b);
+			b->push_cost_b = (len_b - (b->index)) * -1;
+		ft_printf("Node %d push_cost_b: %d\n", b->value, b->push_cost_b);
 		b = b->next;
 	}
 }
 
-int	calculate_total_cost(t_stack *a)
+long	calculate_total_cost(t_stack *stack)
 {
-	int	total_cost;
+	long	total_cost;
 
-	if (a->push_cost_a > 0 && a->target_node->push_cost_target_b > 0)
+	if (stack->push_cost_a > 0 && stack->target_node->push_cost_b > 0)
 	{
-		if (a->push_cost_a > a->target_node->push_cost_target_b)
-			total_cost = a->push_cost_a;
+		if (stack->push_cost_a > stack->target_node->push_cost_b)
+			total_cost = stack->push_cost_a;
 		else
-			total_cost = a->target_node->push_cost_target_b;
+			total_cost = stack->target_node->push_cost_b;
 	}
-	else if (a->push_cost_a < 0 && a->target_node->push_cost_target_b < 0)
+	else if (stack->push_cost_a < 0 && stack->target_node->push_cost_b < 0)
 	{
-		if (ft_abs(a->push_cost_a) > ft_abs(a->target_node->push_cost_target_b))
-			total_cost = ft_abs(a->push_cost_a);
+		if (ft_abs(stack->push_cost_a) > ft_abs(stack->target_node->push_cost_b))
+			total_cost = ft_abs(stack->push_cost_a);
 		else
-			total_cost = ft_abs(a->target_node->push_cost_target_b);
+			total_cost = ft_abs(stack->target_node->push_cost_b);
 	}
 	else
-		total_cost = ft_abs(a->push_cost_a) + ft_abs(a->target_node->push_cost_target_b);
-	return total_cost;
+		total_cost = ft_abs(stack->push_cost_a) + ft_abs(stack->target_node->push_cost_b);
+	return (total_cost);
 }
 
-void	set_cheapest(t_stack *a)
+t_stack	*set_cheapest(t_stack *stack)
 {
 	t_stack	*cheapest_node;
 	long	cheapest_value;
 	int		total_cost;
 
-	if (a == NULL)
-		return;
+	if (stack == NULL)
+		return NULL;
 	cheapest_node = NULL;
 	cheapest_value = LONG_MAX;
-	while (a != NULL)
+	while (stack != NULL)
 	{
-		if (a->target_node != NULL)
+		if (stack->target_node != NULL)
 		{
-			total_cost = calculate_total_cost(a);
+			total_cost = calculate_total_cost(stack);
+			ft_printf("Node %d total cost: %d\n", stack->value, total_cost);
 			if (total_cost < cheapest_value)
 			{
 				cheapest_value = total_cost;
-				cheapest_node = a;
+				cheapest_node = stack;
 			}
 		}
-		a = a->next;
+		stack = stack->next;
 	}
-	if (cheapest_node != NULL)
-		cheapest_node->cheapest = true;
+	return (cheapest_node);
+}
+
+long	calculate_total_cost_b_to_a(t_stack *b)
+{
+	long	total_cost;
+
+	if (b->push_cost_b > 0 && b->target_node->push_cost_a > 0)
+	{
+		if (b->push_cost_b > b->target_node->push_cost_a)
+			total_cost = b->push_cost_b;
+		else
+			total_cost = b->target_node->push_cost_a;
+	}
+	else if (b->push_cost_b < 0 && b->target_node->push_cost_a < 0)
+	{
+		if (ft_abs(b->push_cost_b) > ft_abs(b->target_node->push_cost_a))
+			total_cost = ft_abs(b->push_cost_b);
+		else
+			total_cost = ft_abs(b->target_node->push_cost_a);
+	}
+	else
+		total_cost = ft_abs(b->push_cost_b) + ft_abs(b->target_node->push_cost_a);
+	return (total_cost);
+}
+
+t_stack	*set_cheapest_b_to_a(t_stack *b)
+{
+	t_stack	*cheapest_node;
+	long	cheapest_value;
+	int		total_cost;
+
+	cheapest_node = NULL;
+	cheapest_value = LONG_MAX;
+	if (b == NULL)
+		return (NULL);
+	while (b != NULL)
+	{
+		if (b->target_node != NULL)
+		{
+			total_cost = calculate_total_cost_b_to_a(b);
+			ft_printf("Node %d total cost: %d\n", b->value, total_cost);
+			if (total_cost < cheapest_value)
+			{
+				cheapest_value = total_cost;
+				cheapest_node = b;
+			}
+		}
+		b = b->next;
+	}
+	ft_printf("Cheapest node: %d with cost: %ld\n test, %ld\n", cheapest_node->value, cheapest_value, cheapest_value);
+	return (cheapest_node);
 }

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:36 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:20:03 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*current;
-	
+
 	if (stack == NULL)
 		return ;
 	current = *stack;

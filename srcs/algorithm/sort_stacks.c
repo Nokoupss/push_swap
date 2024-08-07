@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:15:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 07:41:05 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:10:17 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int		len_a;
+	t_stack	*cheapest_node;
 
 	push_2_to_b(a, b);
 	len_a = stack_len(*a);
 	while (len_a > 3)
 	{
-		init_data_a(*a, *b);
-		rotate_all(*a, *b);
+		cheapest_node = init_data_a(*a, *b);
+		rotate_all(a, b, cheapest_node);
 		pb(a, b);
 		len_a--;
 		ft_printf("Stack A : \n");
@@ -32,8 +33,8 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	sort_three(a);
 	while (*b != NULL)
 	{
-		init_data_b(*a, *b);
-		rotate_all(*a, *b);
+		cheapest_node = init_data_b(*a, *b);
+		rotate_all(a, b, cheapest_node);
 		pa(b, a);
 		ft_printf("Stack B : \n");
 		print_stack(*b);

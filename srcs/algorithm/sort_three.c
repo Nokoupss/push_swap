@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:50:59 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 07:38:04 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 04:48:54 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,12 @@
 
 void	sort_three(t_stack **a)
 {
-	t_stack	*current;
-	int		max;
+	t_stack	*max;
 
-	if (*a == NULL || (*a)->next == NULL || (*a)->next->next == NULL)
-		return ;
-	current = *a;
-	max = current->value;
-	while (current)
-	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
-	}
-	if ((*a)->value == max)
+	max = find_max_node(*a);
+	if (*a == max)
 		ra(a);
-	else if ((*a)->next->value == max)
+	else if ((*a)->next == max)
 		rra(a);
 	if ((*a)->value > (*a)->next->value)
 		sa(a);

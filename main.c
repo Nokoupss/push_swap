@@ -6,20 +6,20 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 07:40:07 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:19:17 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
-    while (stack)
-    {
-        ft_printf("%d ", stack->value);
-        stack = stack->next;
-    }
-    ft_printf("\n");
+	while (stack)
+	{
+		ft_printf("%d ", stack->value);
+		stack = stack->next;
+	}
+	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -51,4 +51,3 @@ int	main(int argc, char **argv)
 	free_stack(&b);
 	return (0);
 }
-

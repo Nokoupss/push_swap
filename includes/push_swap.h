@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 08:12:13 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 08:19:47 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,14 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				push_cost_a;
-	int				push_cost_target_b;
+	int				push_cost_b;
 	bool			above_median;
-	bool			cheapest;
 	struct s_stack	*next;
 	struct s_stack	*target_node;
 }				t_stack;
 
-
-void print_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
 t_stack	*go_end_minus_1(t_stack *end);
-
 
 /*
 **Algorithm
@@ -43,11 +40,11 @@ t_stack	*go_end_minus_1(t_stack *end);
 **algo_rotate
 */
 
-void	rotate_both_stacks(t_stack *a, t_stack *b);
-void	reverse_rotate_both_stacks(t_stack *a, t_stack *b);
-void	rotate_stack_a(t_stack *a, int push_cost_a);
-void	rotate_stack_b(t_stack *b, int push_cost_b);
-void	rotate_all(t_stack *a, t_stack *b);
+void	rotate_both_stacks(t_stack **a, t_stack **b);
+void	reverse_rotate_both_stacks(t_stack **a, t_stack **b);
+void	rotate_stack_a(t_stack **a, int push_cost_a);
+void	rotate_stack_b(t_stack **b, int push_cost_b);
+void	rotate_all(t_stack **a, t_stack **b, t_stack *cheapest_node);
 
 /*
 **Algorithm
@@ -71,9 +68,11 @@ void	min_on_top(t_stack **a);
 
 void	set_index(t_stack *stack);
 void	cost_analysis_a(t_stack *a);
-void	cost_analysis_target_b(t_stack *b);
-void	set_cheapest(t_stack *a);
-
+void	cost_analysis_b(t_stack *b);
+long	calculate_total_cost(t_stack *stack);
+t_stack	*set_cheapest(t_stack *stack);
+long	calculate_total_cost_b_to_a(t_stack *b);
+t_stack	*set_cheapest_b_to_a(t_stack *b);
 /*
 **Algorithm
 */
@@ -81,8 +80,8 @@ void	set_cheapest(t_stack *a);
 **init_data
 */
 
-void	init_data_a(t_stack *a, t_stack *b);
-void	init_data_b(t_stack *a, t_stack *b);
+t_stack	*init_data_a(t_stack *a, t_stack *b);
+t_stack	*init_data_b(t_stack *a, t_stack *b);
 
 /*
 **Algorithm

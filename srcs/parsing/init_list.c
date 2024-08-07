@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 07:46:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/07 07:42:48 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ t_stack	*init_node(int value)
 	stack->value = value;
 	stack->index = -1;
 	stack->push_cost_a = 0;
-	stack->push_cost_target_b = 0;
+	stack->push_cost_b = 0;
 	stack->above_median = false;
-	stack->cheapest = false;
 	stack->next = NULL;
 	stack->target_node = NULL;
 	return (stack);
