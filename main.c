@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 07:56:41 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:40:27 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc >= 2)
 		init_list(&a, argv);
-	ft_printf("Initial stack:\n");
-	print_stack(a);
 	if (is_sorted(a) == false)
 	{
 		if (stack_len(a) == 2)
@@ -46,7 +44,6 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("Sorted stack:\n");
 	print_stack(a);
-	print_stack(b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:17:26 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 09:14:07 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:40:38 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_stack	*find_min_node(t_stack *stack)
 		return (NULL);
 	while (current != NULL)
 	{
-		if (current->value < min_node->value)
+		if (current->value <= min_node->value)
 			min_node = current;
 		current = current->next;
 	}
