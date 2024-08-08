@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/07 08:19:47 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/08 07:34:43 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_stack
 
 void	print_stack(t_stack *stack);
 t_stack	*go_end_minus_1(t_stack *end);
+
+void	rotate_both_stacks_test(t_stack **b, t_stack **a);
+void	reverse_rotate_both_stacks_test(t_stack **b, t_stack **a);
+void	rotate_stack_b_test(t_stack **b, int push_cost_b);
+void	rotate_stack_a_test(t_stack **a, int push_cost_a);
+void	rotate_all_test(t_stack **b, t_stack **a, t_stack *cheapest_node);
 
 /*
 **Algorithm

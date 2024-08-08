@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:17:26 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/06 07:39:56 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/08 09:14:07 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,49 +55,18 @@ int	ft_abs(int nb)
 	return (nb);
 }
 
-int	find_min_value(t_stack **a)
-{
-	t_stack	*current;
-	long	min_value;
-	int		min_index;
-
-	current = *a;
-	min_value = LONG_MAX;
-	set_index(*a);
-	min_index = current->index;
-	while (current != NULL)
-	{
-		if (current->index < min_index)
-		{
-			min_index = current->index;
-			min_value = current->value;
-		}
-		current = current->next;
-	}
-	return (min_value);
-}
-
 void	min_on_top(t_stack **a)
 {
-	long	min_value;
 	int	len_a;
+	t_stack	*min_node;
 
 	len_a = stack_len(*a);
-	min_value = find_min_value(a);
-	if (min_value > len_a / 2)
+	min_node = find_min_node(*a);
+	while ((*a)->value != min_node->value)
 	{
-		while (min_value < len_a)
-		{
-			rra(a);
-			min_value++;
-		}
-	}
-	else
-	{
-		while (min_value > 0)
-		{
+		if (min_node->above_median == true)
 			ra(a);
-			min_value--;
-		}
+		else
+			rra(a);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 02:20:45 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/07 08:23:14 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/08 08:32:53 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	cost_analysis_a(t_stack *a)
 			a->push_cost_a = a->index;
 		if (a->above_median == false)
 			a->push_cost_a = (len_a - (a->index)) * -1;
-		ft_printf("Node %d push_cost_a: %d\n", a->value, a->push_cost_a);
 		a = a->next;
 	}
 }
@@ -60,7 +59,6 @@ void	cost_analysis_b(t_stack *b)
 			b->push_cost_b = b->index;
 		if (b->above_median == false)
 			b->push_cost_b = (len_b - (b->index)) * -1;
-		ft_printf("Node %d push_cost_b: %d\n", b->value, b->push_cost_b);
 		b = b->next;
 	}
 }
@@ -103,7 +101,6 @@ t_stack	*set_cheapest(t_stack *stack)
 		if (stack->target_node != NULL)
 		{
 			total_cost = calculate_total_cost(stack);
-			ft_printf("Node %d total cost: %d\n", stack->value, total_cost);
 			if (total_cost < cheapest_value)
 			{
 				cheapest_value = total_cost;
@@ -153,7 +150,6 @@ t_stack	*set_cheapest_b_to_a(t_stack *b)
 		if (b->target_node != NULL)
 		{
 			total_cost = calculate_total_cost_b_to_a(b);
-			ft_printf("Node %d total cost: %d\n", b->value, total_cost);
 			if (total_cost < cheapest_value)
 			{
 				cheapest_value = total_cost;
@@ -162,6 +158,5 @@ t_stack	*set_cheapest_b_to_a(t_stack *b)
 		}
 		b = b->next;
 	}
-	ft_printf("Cheapest node: %d with cost: %ld\n test, %ld\n", cheapest_node->value, cheapest_value, cheapest_value);
 	return (cheapest_node);
 }

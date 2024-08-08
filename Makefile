@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 15:50:59 by nbelkace          #+#    #+#              #
-#    Updated: 2024/08/06 07:37:05 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/08/08 07:33:28 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ UTILS = utils
 UTILS_C = $(SRCS)/$(UTILS)
 
 # Source Files
-SRCS_C =	$(SRCS)/$(ALGORITHM)/algo_rotate.c \
+SRCS_C =	$(SRCS)/$(ALGORITHM)/algo_rotate_b_to_a.c \
+			$(SRCS)/$(ALGORITHM)/algo_rotate.c \
 			$(SRCS)/$(ALGORITHM)/algo_utils.c \
 			$(SRCS)/$(ALGORITHM)/cost_analysis.c \
 			$(SRCS)/$(ALGORITHM)/init_data.c \
