@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 07:34:43 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/15 05:11:57 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_stack
 }				t_stack;
 
 void	print_stack(t_stack *stack);
-t_stack	*go_end_minus_1(t_stack *end);
 
 void	rotate_both_stacks_test(t_stack **b, t_stack **a);
 void	reverse_rotate_both_stacks_test(t_stack **b, t_stack **a);
@@ -110,6 +109,7 @@ void	set_target_node_b(t_stack *b, t_stack *a);
 */
 
 void	sort_stacks(t_stack **a, t_stack **b);
+int		is_sorted(t_stack *stack);
 
 /*
 **Algorithm
@@ -174,6 +174,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 **init_list
 */
 
+void	append_node(t_stack **stack, int n);
 t_stack	*init_list(t_stack **a, char **argv);
 t_stack	*init_node(int value);
 t_stack	*stack_last(t_stack *stack);
@@ -186,10 +187,10 @@ void	stack_add_back(t_stack **stack, t_stack *new);
 **stack_utils
 */
 
-int		is_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
-t_stack	*find_max_node(t_stack *stack);
-t_stack	*find_min_node(t_stack *stack);
 void	free_stack(t_stack **stack);
+int		duplicate_error(t_stack *a, int n);
+int		syntax_error(char *str_n);
+void	free_stack_error(t_stack **stack);
 
 #endif

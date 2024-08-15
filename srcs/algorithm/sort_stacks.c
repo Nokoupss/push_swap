@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:15:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 11:41:12 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/15 03:36:11 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,20 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	}
 	if (is_sorted(*a) == false)
 		min_on_top(a);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	current = stack;
+	if (stack == NULL)
+		return (true);
+	while (current->next != NULL)
+	{
+		if (current->value > current->next->value)
+			return (false);
+		current = current->next;
+	}
+	return (true);
 }
