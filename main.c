@@ -6,21 +6,11 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:54:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/15 05:11:32 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/19 02:40:06 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		ft_printf("%d ", stack->value);
-		stack = stack->next;
-	}
-	ft_printf("\n");
-}
 
 int	main(int argc, char **argv)
 {
@@ -33,6 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc >= 2)
 		init_list(&a, argv);
+	overflow_error(a);
+	duplicate_error(a);
 	if (is_sorted(a) == false)
 	{
 		if (stack_len(a) == 2)
@@ -42,8 +34,6 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-	ft_printf("Sorted stack:\n");
-	print_stack(a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

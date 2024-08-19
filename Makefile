@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 15:50:59 by nbelkace          #+#    #+#              #
-#    Updated: 2024/08/15 04:12:27 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/08/19 02:57:17 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS_C =	$(SRCS)/$(ALGORITHM)/algo_rotate_b_to_a.c \
 			$(SRCS)/$(COMMAND)/reverse-rotate_command.c \
 			$(SRCS)/$(COMMAND)/rotate_command.c \
 			$(SRCS)/$(COMMAND)/swap_command.c \
+			$(SRCS)/$(PARSING)/check_error.c \
 			$(SRCS)/$(PARSING)/init_list.c \
 			$(SRCS)/$(PARSING)/stack_utils.c \
 			main.c \

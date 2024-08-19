@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/15 05:11:57 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/19 05:32:50 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_stack
 {
-	int				value;
+	long				value;
 	int				index;
 	int				push_cost_a;
 	int				push_cost_b;
@@ -32,11 +32,9 @@ typedef struct s_stack
 
 void	print_stack(t_stack *stack);
 
-void	rotate_both_stacks_test(t_stack **b, t_stack **a);
-void	reverse_rotate_both_stacks_test(t_stack **b, t_stack **a);
-void	rotate_stack_b_test(t_stack **b, int push_cost_b);
-void	rotate_stack_a_test(t_stack **a, int push_cost_a);
-void	rotate_all_test(t_stack **b, t_stack **a, t_stack *cheapest_node);
+void	rotate_stack_b_2(t_stack **b, int push_cost_b);
+void	rotate_stack_a_2(t_stack **a, int push_cost_a);
+void	rotate_all_2(t_stack **b, t_stack **a, t_stack *cheapest_node);
 
 /*
 **Algorithm
@@ -45,8 +43,6 @@ void	rotate_all_test(t_stack **b, t_stack **a, t_stack *cheapest_node);
 **algo_rotate
 */
 
-void	rotate_both_stacks(t_stack **a, t_stack **b);
-void	reverse_rotate_both_stacks(t_stack **a, t_stack **b);
 void	rotate_stack_a(t_stack **a, int push_cost_a);
 void	rotate_stack_b(t_stack **b, int push_cost_b);
 void	rotate_all(t_stack **a, t_stack **b, t_stack *cheapest_node);
@@ -171,12 +167,24 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 **Parsing
 */
 /*
+**check_error
+*/
+
+void	overflow_error(t_stack *a);
+void	duplicate_error(t_stack *a);
+void	syntax_error(t_stack *a, char *split);
+void	free_stack_error(t_stack **stack);
+
+/*
+**Parsing
+*/
+/*
 **init_list
 */
 
 void	append_node(t_stack **stack, int n);
 t_stack	*init_list(t_stack **a, char **argv);
-t_stack	*init_node(int value);
+t_stack	*init_node(long value);
 t_stack	*stack_last(t_stack *stack);
 void	stack_add_back(t_stack **stack, t_stack *new);
 
@@ -189,8 +197,5 @@ void	stack_add_back(t_stack **stack, t_stack *new);
 
 int		stack_len(t_stack *stack);
 void	free_stack(t_stack **stack);
-int		duplicate_error(t_stack *a, int n);
-int		syntax_error(char *str_n);
-void	free_stack_error(t_stack **stack);
 
 #endif

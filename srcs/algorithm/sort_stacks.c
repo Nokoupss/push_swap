@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:15:23 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/15 03:36:11 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/19 02:56:05 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	while (*b != NULL)
 	{
 		cheapest_node = init_data_b(*a, *b);
-		rotate_all_test(b, a, cheapest_node);
+		rotate_all_2(b, a, cheapest_node);
 		pa(b, a);
 	}
 	if (is_sorted(*a) == false)

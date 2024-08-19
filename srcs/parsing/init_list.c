@@ -6,114 +6,63 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/15 05:37:54 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/18 23:47:52 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-// t_stack	*init_list(t_stack **a, char **argv)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	**split;
-// 	t_stack	*temp;
-
-// 	i = 1;
-// 	while (argv[i] != NULL)
-// 	{
-// 		j = 0;
-// 		split = ft_split(argv[i], ' ');
-// 		while (split[j])
-// 		{
-// 			temp = init_node(ft_atoi(split[j]));
-// 			if (temp == NULL)
-// 			{
-// 				free_stack(a);
-// 				return (NULL);
-// 			}
-// 			stack_add_back(a, temp);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (*a);
-// }
-
-void free_split(char **split)
+static long	ft_atol(const char *s) //Define a function that converts every string into a long value
 {
-    int i;
+	long	result;
+	int		sign;
 
-    if (split == NULL)
-        return;
-
-    i = 0;
-    while (split[i] != NULL)
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
+	result = 0;
+	sign = 1; 
+	while (*s == ' ' || *s == '\t' || *s == '\n' || \
+			*s == '\r' || *s == '\f' || *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (ft_isdigit(*s))
+		result = result * 10 + (*s++ - '0');
+	return (result * sign);
 }
 
-static void process_split_strings(t_stack **stack, char **split)
+t_stack	*init_list(t_stack **a, char **argv)
 {
-    int j;
-    t_stack *temp;
-    int value;
+	int		i;
+	int		j;
+	char	**split;
+	t_stack	*temp;
 
-    j = 0;
-    while (split[j])
-    {
-        // Validate syntax
-        if (syntax_error(split[j]))
-        {
-            free_split(split);
-            free_stack_error(stack);
-        }
-
-        // Convert string to integer and check for duplicate values
-        value = ft_atoi(split[j]);
-        if (duplicate_error(*stack, value))
-        {
-            free_split(split);
-            free_stack_error(stack);
-        }
-        // Initialize node and add it to the stack
-        temp = init_node(value);
-        if (temp == NULL)
-        {
-            free_split(split);
-            free_stack_error(stack);
-        }
-        stack_add_back(stack, temp);
-        j++;
-    }
-    // Free the split strings
-    free_split(split);
+	i = 1;
+	while (argv[i] != NULL)
+	{
+		j = 0;
+		split = ft_split(argv[i], ' ');
+		syntax_error(*a, *split);
+		while (split[j])
+		{
+			temp = init_node(ft_atol(split[j]));
+			if (temp == NULL)
+			{
+				free_stack(a);
+				return (NULL);
+			}
+			stack_add_back(a, temp);
+			j++;
+		}
+		i++;
+	}
+	return (*a);
 }
 
-t_stack *init_list(t_stack **a, char **argv)
-{
-    int i;
-    char **split;
-
-    i = 1;
-    while (argv[i] != NULL)
-    {
-        split = ft_split(argv[i], ' ');
-        if (split == NULL) // Check if split failed
-        {
-            free_stack_error(a);
-        }
-        process_split_strings(a, split);
-
-        i++;
-    }
-    return (*a);
-}
-
-t_stack	*init_node(int value)
+t_stack	*init_node(long value)
 {
 	t_stack	*stack;
 
