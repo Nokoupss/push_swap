@@ -6,32 +6,11 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/18 23:47:52 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:39:38 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-static long	ft_atol(const char *s) //Define a function that converts every string into a long value
-{
-	long	result;
-	int		sign;
-
-	result = 0;
-	sign = 1; 
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			sign = -1;
-		s++;
-	}
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
-	return (result * sign);
-}
 
 t_stack	*init_list(t_stack **a, char **argv)
 {
@@ -45,6 +24,8 @@ t_stack	*init_list(t_stack **a, char **argv)
 	{
 		j = 0;
 		split = ft_split(argv[i], ' ');
+		if (split == NULL)
+			return (NULL);
 		syntax_error(*a, *split);
 		while (split[j])
 		{
@@ -52,11 +33,13 @@ t_stack	*init_list(t_stack **a, char **argv)
 			if (temp == NULL)
 			{
 				free_stack(a);
+				free_split(split);
 				return (NULL);
 			}
 			stack_add_back(a, temp);
 			j++;
 		}
+		free_split(split);
 		i++;
 	}
 	return (*a);

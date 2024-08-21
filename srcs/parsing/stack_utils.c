@@ -6,11 +6,53 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/18 19:58:13 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/21 04:40:30 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+
+long	ft_atol(const char *s)
+{
+	int		i;
+	int		sign;
+	long	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while ((s[i] >= '\t' && s[i] <= '\r') || (s[i] == ' '))
+		i++;
+	if (s[i] == '+' || s[i] == '-')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		nb = nb * 10;
+		nb = nb + (s[i] - 48);
+		i++;
+	}
+	return (nb * sign);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	if (split == NULL)
+		return;
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
 
 int	stack_len(t_stack *stack)
 {

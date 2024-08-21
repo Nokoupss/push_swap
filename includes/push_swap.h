@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/19 05:32:50 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/21 02:16:45 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,8 @@ void	stack_add_back(t_stack **stack, t_stack *new);
 **stack_utils
 */
 
+long	ft_atol(const char *s);
+void	free_split(char **split);
 int		stack_len(t_stack *stack);
 void	free_stack(t_stack **stack);
 

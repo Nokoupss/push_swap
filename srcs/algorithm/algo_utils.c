@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:17:26 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 11:40:38 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/21 01:57:48 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ int	ft_abs(int nb)
 
 void	min_on_top(t_stack **a)
 {
-	int	len_a;
 	t_stack	*min_node;
 
-	len_a = stack_len(*a);
 	min_node = find_min_node(*a);
 	while ((*a)->value != min_node->value)
 	{
