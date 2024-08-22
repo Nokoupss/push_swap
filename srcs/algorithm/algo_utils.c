@@ -6,11 +6,32 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:17:26 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/21 01:57:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 04:37:46 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+void	set_index(t_stack *stack)
+{
+	int	i;
+	int	median;
+
+	i = 0;
+	if (stack == NULL)
+		return ;
+	median = stack_len(stack) / 2;
+	while (stack != NULL)
+	{
+		stack->index = i;
+		if (i <= median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
+	}
+}
 
 t_stack	*find_max_node(t_stack *stack)
 {
@@ -51,7 +72,7 @@ t_stack	*find_min_node(t_stack *stack)
 int	ft_abs(int nb)
 {
 	if (nb < 0)
-		return(nb * -1);
+		return (nb * -1);
 	return (nb);
 }
 

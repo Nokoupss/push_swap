@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:57:59 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/22 03:21:51 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 04:37:28 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	syntax_error(t_stack *a, char **split, int i)
 	int	j;
 
 	j = 0;
-	if ((split[i][j] != '+' && split[i][j] != '-') 
+	if ((split[i][j] != '+' && split[i][j] != '-')
 		&& (split[i][j] < '0' || split[i][j] > '9'))
 	{
 		free_split(split);
 		free_stack_error(&a);
 	}
-	if ((split[i][j] == '+' || split[i][j] == '-') 
+	if ((split[i][j] == '+' || split[i][j] == '-')
 		&& (split[i][j + 1] < '0' || split[i][j + 1] > '9'))
 	{
 		free_split(split);

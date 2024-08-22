@@ -6,12 +6,11 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/22 02:46:24 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 04:37:11 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
 
 long	ft_atol(const char *s)
 {
@@ -44,7 +43,7 @@ void	free_split(char **split)
 	int	i;
 
 	if (split == NULL)
-		return;
+		return ;
 	i = 0;
 	while (split[i] != NULL)
 	{
@@ -84,7 +83,7 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void free_stack_split(t_stack **a, char **split)
+void	free_stack_split(t_stack **a, char **split)
 {
 	free_stack(a);
 	free_split(split);

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/22 02:51:23 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 04:36:39 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_stack
 {
-	long				value;
+	long			value;
 	int				index;
 	int				push_cost_a;
 	int				push_cost_b;
@@ -30,22 +30,25 @@ typedef struct s_stack
 	struct s_stack	*target_node;
 }				t_stack;
 
-void	print_stack(t_stack *stack);
+/*
+**Algorithm
+*/
+/*
+**algo_rotate_a
+*/
 
-void	rotate_stack_b_2(t_stack **b, int push_cost_b);
-void	rotate_stack_a_2(t_stack **a, int push_cost_a);
-void	rotate_all_2(t_stack **b, t_stack **a, t_stack *cheapest_node);
+void	rotate_stack_a(t_stack **a, int push_cost_a);
+void	rotate_stack_b(t_stack **b, int push_cost_b);
+void	rotate_all_a(t_stack **a, t_stack **b, t_stack *cheapest_node);
 
 /*
 **Algorithm
 */
 /*
-**algo_rotate
+**algo_rotate_b
 */
 
-void	rotate_stack_a(t_stack **a, int push_cost_a);
-void	rotate_stack_b(t_stack **b, int push_cost_b);
-void	rotate_all(t_stack **a, t_stack **b, t_stack *cheapest_node);
+void	rotate_all_b(t_stack **b, t_stack **a, t_stack *cheapest_node);
 
 /*
 **Algorithm
@@ -54,26 +57,34 @@ void	rotate_all(t_stack **a, t_stack **b, t_stack *cheapest_node);
 **algo_utils
 */
 
+void	set_index(t_stack *stack);
 t_stack	*find_max_node(t_stack *stack);
 t_stack	*find_min_node(t_stack *stack);
 int		ft_abs(int nb);
-int		find_min_value(t_stack **a);
 void	min_on_top(t_stack **a);
 
 /*
 **Algorithm
 */
 /*
-**cost_analysis
+**cost_analysis_a
 */
 
-void	set_index(t_stack *stack);
 void	cost_analysis_a(t_stack *a);
+long	calculate_total_cost_a(t_stack *stack);
+t_stack	*set_cheapest_a(t_stack *stack);
+
+/*
+**Algorithm
+*/
+/*
+**cost_analysis_b
+*/
+
 void	cost_analysis_b(t_stack *b);
-long	calculate_total_cost(t_stack *stack);
-t_stack	*set_cheapest(t_stack *stack);
-long	calculate_total_cost_b_to_a(t_stack *b);
-t_stack	*set_cheapest_b_to_a(t_stack *b);
+long	calculate_total_cost_b(t_stack *b);
+t_stack	*set_cheapest_b(t_stack *b);
+
 /*
 **Algorithm
 */
@@ -91,7 +102,6 @@ t_stack	*init_data_b(t_stack *a, t_stack *b);
 **set_target_node
 */
 
-void	push_2_to_b(t_stack **a, t_stack **b);
 t_stack	*find_closest_smaller(t_stack *b, int value);
 void	set_target_node_a(t_stack *a, t_stack *b);
 t_stack	*find_closest_bigger(t_stack *a, int value);
@@ -105,6 +115,7 @@ void	set_target_node_b(t_stack *b, t_stack *a);
 */
 
 void	sort_stacks(t_stack **a, t_stack **b);
+void	push_2_to_b(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
 
 /*

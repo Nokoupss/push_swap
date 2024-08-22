@@ -6,24 +6,11 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 00:37:30 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/08 11:37:40 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 04:31:45 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	push_2_to_b(t_stack **a, t_stack **b)
-{
-	if ((a) == NULL || (b) == NULL)
-		return ;
-	if (stack_len(*a) > 4)
-	{
-		pb(a, b);
-		pb(a, b);
-	}
-	else if (stack_len(*a) == 4)
-		pb(a, b);
-}
 
 t_stack	*find_closest_smaller(t_stack *b, int value)
 {
