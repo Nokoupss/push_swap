@@ -6,13 +6,13 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:16:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/21 04:39:38 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 03:17:21 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack	*init_list(t_stack **a, char **argv)
+void	init_list(t_stack **a, char **argv)
 {
 	int		i;
 	int		j;
@@ -25,24 +25,19 @@ t_stack	*init_list(t_stack **a, char **argv)
 		j = 0;
 		split = ft_split(argv[i], ' ');
 		if (split == NULL)
-			return (NULL);
-		syntax_error(*a, *split);
-		while (split[j])
+			return ;
+		while (split[j] != NULL)
 		{
+			syntax_error(*a, split, j);
 			temp = init_node(ft_atol(split[j]));
 			if (temp == NULL)
-			{
-				free_stack(a);
-				free_split(split);
-				return (NULL);
-			}
+				free_stack_split(a, split);
 			stack_add_back(a, temp);
 			j++;
 		}
 		free_split(split);
 		i++;
 	}
-	return (*a);
 }
 
 t_stack	*init_node(long value)

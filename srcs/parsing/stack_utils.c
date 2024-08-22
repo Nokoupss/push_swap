@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 03:44:10 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/21 04:40:30 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 02:46:24 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,11 @@ void	free_stack(t_stack **stack)
 		current = temp;
 	}
 	*stack = NULL;
+}
+
+void free_stack_split(t_stack **a, char **split)
+{
+	free_stack(a);
+	free_split(split);
+	return ;
 }

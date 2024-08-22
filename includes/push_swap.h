@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:55:08 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/08/21 02:16:45 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/08/22 02:51:23 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 
 void	overflow_error(t_stack *a);
 void	duplicate_error(t_stack *a);
-void	syntax_error(t_stack *a, char *split);
+void	syntax_error(t_stack *a, char **split, int j);
 void	free_stack_error(t_stack **stack);
 
 /*
@@ -183,7 +183,7 @@ void	free_stack_error(t_stack **stack);
 */
 
 void	append_node(t_stack **stack, int n);
-t_stack	*init_list(t_stack **a, char **argv);
+void	init_list(t_stack **a, char **argv);
 t_stack	*init_node(long value);
 t_stack	*stack_last(t_stack *stack);
 void	stack_add_back(t_stack **stack, t_stack *new);
@@ -199,5 +199,6 @@ long	ft_atol(const char *s);
 void	free_split(char **split);
 int		stack_len(t_stack *stack);
 void	free_stack(t_stack **stack);
+void	free_stack_split(t_stack **a, char **split);
 
 #endif
